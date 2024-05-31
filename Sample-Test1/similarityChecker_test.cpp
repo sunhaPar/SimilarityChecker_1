@@ -7,27 +7,24 @@ using namespace std;
 
 class CheckerFixture : public testing::Test {
 public:
-	SimilarityChecker checker{ "ABCDE" };
+	SimilarityChecker checker{ "ABCDEFGH" };
 };
 
 
 TEST_F(CheckerFixture, LengthTestSameLength) {
-	string guess = "DEFGY";
+	string guess = "ABCDEFGH";
 	
-	int ret = checker.checkLength(guess);
-	EXPECT_EQ(ret, 60);
+	EXPECT_EQ(checker.checkLength(guess), 60);
 }
 
 TEST_F(CheckerFixture, LengthTestDoubleGap) {
 	string guess = "B";
 
-	int ret = checker.checkLength(guess);
-	EXPECT_EQ(ret, 0);
+	EXPECT_EQ(checker.checkLength(guess), 0);
 }
 
 TEST_F(CheckerFixture, LengthTestPartial) {
-	string guess = "ABC";
+	string guess = "ABCDEF";
 
-	int ret = checker.checkLength(guess);
-	EXPECT_EQ(ret, 20);
+	EXPECT_EQ(checker.checkLength(guess), 40);
 }

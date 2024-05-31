@@ -13,18 +13,18 @@ public:
 
 	}
 
-	int checkLength(const string& guess)
+	double checkLength(const string& guess)
 	{
 		if (guess.size() == target.size()) return MaxLengthScore;
 
-		return getLenghScore(guess);
+		return getLengthScore(guess);
 	}
 
 private:
-	int getLenghScore(const string& guess)
+	double getLengthScore(const string& guess)
 	{
-		int small = 0;
-		int gap = 0;
+		double small = 0;
+		double gap = 0;
 		if (guess.size() > target.size())
 		{
 			gap = guess.size() - target.size();
@@ -38,7 +38,7 @@ private:
 
 		if (gap >= small)   return 0;  //double Gap
 
-		return (MaxLengthScore * (small - gap) / small);
+		return (double)(MaxLengthScore * (small - gap) / small);
 	}
 
 	string target;
