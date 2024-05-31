@@ -28,3 +28,36 @@ TEST_F(CheckerFixture, LengthTestPartial) {
 
 	EXPECT_EQ(checker.checkLength(guess), 40);
 }
+
+TEST_F(CheckerFixture, AlphaTestSame) {
+	string guess = "ABCDEFGH";
+
+	EXPECT_EQ(checker.checkAlpha(guess), 40);
+}
+
+
+TEST_F(CheckerFixture, AlphaTestPatial) {
+	string guess = "HAEDFG";
+
+	EXPECT_EQ(checker.checkAlpha(guess), 30);
+}
+
+TEST_F(CheckerFixture, AlphaTestZero) {
+	string guess = "ZZZZZ";
+
+	EXPECT_EQ(checker.checkAlpha(guess), 0);
+}
+
+
+TEST_F(CheckerFixture, AlphaTestTotal1) {
+	string guess = "ABCDEFGH";
+
+	EXPECT_EQ(checker.checkAlpha(guess) + checker.checkLength(guess), 100);
+}
+
+
+TEST_F(CheckerFixture, AlphaTestTotal2) {
+	string guess = "A";
+
+	EXPECT_EQ(checker.checkAlpha(guess) + checker.checkLength(guess), 5);
+}
